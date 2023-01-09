@@ -13,8 +13,8 @@ function App() {
   return (
     <div>
       <h1>Todo List</h1>
-      <TodoList />
       <AddTodoForm onAddTodo={handleAddTodo} />
+      <TodoList />
       <p>{newTodo}</p>
     </div>
   );
