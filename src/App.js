@@ -16,9 +16,6 @@ function App() {
         JSON.parse(localStorage.getItem(key))
         : []
     );
-
-
-
     useEffect(() => {
       localStorage.setItem(key, JSON.stringify(value))
     }, [value, key]);
@@ -26,38 +23,18 @@ function App() {
     return [value, setValue];
   }
 
-  // function App() {
-  //   const [todoList, setTodoList] =
-  //     useSemiPersistentState('savedTodoList')
-
-  const addTodo = (newTodo) => {
-    setTodoList([...todoList, newTodo])
-  }
-  // const addTodo = (todo) => {
-  //   setTodoList([...todoList, todo]);
-  // };
+  const addTodo = (todo) => {
+    setTodoList([...todoList, todo]);
+  };
   const removeTodo = (id) => {
     setTodoList(todoList.filter(todo => todo.id !== id));
   };
 
   return (
-    // <>
-    //   <form>
-    //     <input type="text" />
-    //     <button type="submit" onClick={(e) => {
-    //       e.preventDefault();
-    //       addTodo({ text: e.target.previousSibling.value, completed: false });
-    //     }}>Add Todo</button>
-    //   </form>
-    //   <ul>
-    //     {todoList.map((todo, index) => (
-    //       <li key={index}>{todo.text}</li>
-    //     ))}
-    //   </ul>
-    // </>
+
     <>
       <h1>Todo List</h1>
-      <AddTodoForm onAddTodo={addTodo} addTodo={addTodo} />
+      <AddTodoForm addTodo={addTodo} />
       <TodoList todoList={todoList} todos={todoList} onRemoveTodo={removeTodo} />
     </>
   );
