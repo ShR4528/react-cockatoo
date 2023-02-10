@@ -1,45 +1,36 @@
-import React, { useState, useEffect } from 'react'
-import TodoList from './TodoList'
-import AddTodoForm from './AddTodoForm'
-
+import React from 'react';
+import TodoList from './TodoList';
+import AddTodoForm from './AddTodoForm';
+import useSemiPersistentState from './useSemiPersistentState';
 
 function App() {
-  const [todoList, setTodoList] = useState([
-    { id: 1, title: "Learn React" },
-    { id: 2, title: "Learn GraphQL" },
-    { id: 3, title: "Learn TypeScript" }
-  ]);
+  const [todoList, setTodoList] = useSemiPersistentState(
+    'savedTodoList',
+    []
+  );
+  // function removeTodo(id) {
+  //   setTodoList(todoList.filter(todo => todo.id !== id));
+  // }
+  const removeTodo = id => {
+    const newTodoList = todoList.filter(todo => todo.id !== id);
+    setTodoList(newTodoList);
+  };
 
-  function useSemiPersistentState(key) {
-    const [value, setValue] = useState(
-      Array.isArray(JSON.parse(localStorage.getItem(key))) ?
-        JSON.parse(localStorage.getItem(key))
-        : []
-    );
-    useEffect(() => {
-      localStorage.setItem(key, JSON.stringify(value))
-    }, [value, key]);
-
-    return [value, setValue];
+  function addTodo(newTodo) {
+    setTodoList([...todoList, newTodo]);
   }
 
-  const addTodo = (todo) => {
-    setTodoList([...todoList, todo]);
-  };
-  const removeTodo = (id) => {
-    setTodoList(todoList.filter(todo => todo.id !== id));
-  };
-
   return (
-
-    <>
+    <div className="App">
       <h1>Todo List</h1>
       <AddTodoForm addTodo={addTodo} />
-      <TodoList todoList={todoList} todos={todoList} onRemoveTodo={removeTodo} />
-    </>
+      <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+    </div>
   );
 }
 
-
 export default App;
+
+
+
 
