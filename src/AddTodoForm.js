@@ -4,6 +4,7 @@ import InputWithLabel from "./InputWithLabel";
 function AddTodoForm({ addTodo }) {
 
     const [todoTitle, setTodoTitle] = useState("");
+    const [todoList] = useState([]);
 
     const handleTitleChange = (event) => {
         setTodoTitle(event.target.value);
@@ -14,7 +15,7 @@ function AddTodoForm({ addTodo }) {
         addTodo({
             title: todoTitle,
             done: false,
-            id: "",
+            id: todoList.length + 1,
         });
         setTodoTitle("");
     };
@@ -35,15 +36,6 @@ function AddTodoForm({ addTodo }) {
     );
 }
 export default AddTodoForm;
-
-
-
-
-
-
-
-
-
 
 
 

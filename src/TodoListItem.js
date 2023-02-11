@@ -1,6 +1,6 @@
 import React from "react";
 
-const TodoListItem = ({ item, todo, onRemoveTodo }) => (
+const TodoListItem = ({ todo, onRemoveTodo }) => (
 
 
     <li>
