@@ -12,3 +12,4 @@
 
 ## https://github.com/ShR4528/react-cockatoo/tree/lesson1.6
 
+## https://github.com/ShR4528/react-cockatoo/tree/lesson1.7
