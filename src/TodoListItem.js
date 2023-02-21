@@ -1,19 +1,21 @@
 import React from "react";
 
-const TodoListItem = ({ todo, onRemoveTodo }) => (
+const TodoListItem = ({ todo, onRemoveTodo, setTodoList, todoList }) => (
 
 
-    <li>
+    < li >
         {todo.title}
-        <button type="button"
+
+        < button type="button"
             key={todo.id}
             onClick={() =>
                 onRemoveTodo(todo.id)}>
             Remove
-        </button>
-    </li>
+        </button >
+    </li >
 )
-
-
-
 export default TodoListItem;
+
+
+
+
